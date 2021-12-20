@@ -1,5 +1,9 @@
 # Simple Calculator
 
+GitHub: https://github.com/Reverier-Xu/DataStructuresLab
+
+西电数据结构大作业 19040300024 徐升
+
 ## how to run it
 
 if you have CMake Build System:
