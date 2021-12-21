@@ -74,13 +74,13 @@ ElementExpression *Parser::stringToExpression(const std::string &exp) {
             else {
 
                 // if the stack is empty, so it doesn't contains a '('
-                throw std::string("could not find a '(' to match the ')'.");
+                throw std::runtime_error("could not find a '(' to match the ')'.");
             }
         } else if (exp[i] == ' ') {
             // escape black characters.
             continue;
         } else {
-            throw std::string("input contains characters that not recognized.");
+            throw std::runtime_error("input contains characters that not recognized.");
         }
         // log(LogLevel::MESSAGE, "after a loop, result's size is", std::to_string(res->size()));
     }

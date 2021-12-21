@@ -35,8 +35,8 @@ int main() {
             res = Calculator::calculate(p);
             delete p;
             std::cout << "[\033[36mOut\033[0m]: " << input << " = " << res << std::endl << std::endl;
-        } catch (std::string& e) {
-            log(LogLevel::ERROR, e); // log the error.
+        } catch (std::runtime_error& e) {
+            log(LogLevel::ERROR, e.what()); // log the error.
         }
     }
 }

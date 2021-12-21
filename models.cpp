@@ -162,6 +162,6 @@ bool Element::operator<=(Element e) const  {
             return this->getValue() <= e.getValue();
         }
     } else {
-        throw std::string("operator<=(): the two operand is not in the same type.");
+        throw std::runtime_error("operator<=(): the two operand is not in the same type.");
     }
 }

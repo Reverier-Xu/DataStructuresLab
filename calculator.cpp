@@ -28,12 +28,14 @@ Element calc(Element x, Element op, Element y) {
             break;
         default:
             // the Operator is not support.
-            throw std::string("operator not support.");
+            throw std::runtime_error("operator not support.");
     }
     return res;
 }
 
 double Calculator::calculate(ElementExpression *exp) {
+    if (exp->size() <= 0)
+        throw std::runtime_error("expression is null");
     ElementStack stack;
     for (int i = 0; i < exp->size(); i++) {
         // get the current item.
@@ -50,7 +52,7 @@ double Calculator::calculate(ElementExpression *exp) {
             // if the stack is empty, the operator has no operands.
             // so the expression must be illegal.
             if (stack.empty()) {
-                throw std::string("expression is illegal.");
+                throw std::runtime_error("expression is illegal.");
             }
 
             // get the first operand.
@@ -68,7 +70,7 @@ double Calculator::calculate(ElementExpression *exp) {
                 stack.push(y);
             } else if (stack.empty()) {
                 // other operators like '*' and '/' couldn't work with single operand.
-                throw std::string("expression is illegal.");
+                throw std::runtime_error("expression is illegal.");
             } else {
 
                 // get another operand, calculate the result, then push result into stack.
@@ -82,7 +84,7 @@ double Calculator::calculate(ElementExpression *exp) {
     Element res = stack.top();
     stack.pop();
     if (!stack.empty()) { // if stack is not empty, there must be some errors in the expression.
-        throw std::string("expression is illegal.");
+        throw std::runtime_error("expression is illegal.");
     }
 
     // return the value as double variable.
